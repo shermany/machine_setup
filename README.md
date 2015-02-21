@@ -1,0 +1,3 @@
+# machine setup repo
+
+dotfiles, etc...
