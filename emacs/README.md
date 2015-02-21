@@ -8,7 +8,7 @@ http://www.gnu.org/software/emacs/#Obtaining
 
 ### Build Commands
 
-``
+```
 $ ./configure —prefix=/home/seanh/local --with-x=no --without-sound --without-xpm --without-jpeg --without-tiff --without-gif --without-png
 
 $ make
