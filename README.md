@@ -15,6 +15,7 @@ Setup notes, dotfiles, etc...
 * 1password
 * git
 * Adium
+* Evernote
 
 ### Config
 * .bashrc
