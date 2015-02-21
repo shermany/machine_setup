@@ -12,6 +12,11 @@ Setup notes, dotfiles, etc...
 * homebrew
 * emacs
 * pygmentize for ccat alias
+(after updating to latest 2.7 series python)
+```
+$ pip install Pygments
+```
+
 * 1password
 * git
 * Adium
@@ -25,6 +30,7 @@ Setup notes, dotfiles, etc...
 
 ### Languages/Runtimes
 
+* Python latest 2.7
 * golang
 * Java
 * Clojure
