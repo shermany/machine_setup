@@ -1,0 +1,168 @@
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# make less more friendly for non-text input files, see lesspipe(1)
+#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+### <PROMPT>
+##
+#
+
+# define some colors
+cred=$(tput setaf 1)
+cgreen=$(tput setaf 2)
+cblue=$(tput setaf 4)
+creset=$(tput sgr0)
+
+# Note newline in prompt makes the terminal easier to read
+PS1='
+--> \w\r\n\[$cblue\][\u@\h]\$\[$creset\] '
+
+# set iterm2/xterm title
+PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
+
+#
+##
+### </PROMPT>
+
+### <ALIASES>
+##
+#
+
+# some more ls aliases
+alias ll='ls -lG'
+alias la='ls -AG'
+alias l='ls -lhFG'
+alias e='emacs --no-desktop'
+alias g='git'
+alias gd='git diff'
+alias gs='git status'
+alias grevert='git checkout -- '
+alias myip="ifconfig |grep 'inet '|grep -v 127|awk '{print \$2}'"
+alias bd=". bd -s"
+alias hsearch='history|fgrep -i '
+alias cleanbackups="find . -name '*~' -exec rm {} \;"
+alias deldsstores="find . -name '.DS_Store' -exec rm {} \;"
+
+alias dt='cd ~/Desktop'
+alias deriveddata='cd ~/Library/Developer/Xcode/DerivedData'
+
+# edit/reload profile
+alias ep='e ~/.bashrc'
+alias rp='source ~/.bashrc'
+
+# colorized source code output
+alias ccat='pygmentize -O style=monokai -f console256 -g'
+
+#
+##
+### </ALIASES>
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+fi
+
+export EDITOR="emacs -nw --no-desktop"
+export GIT_EDITOR="emacs -nw --no-desktop"
+
+# set node stuff
+export NODE_PATH="/usr/local/lib/node:/usr/local/lib/node_modules"
+
+# Make emacs prompt look right
+if [ "$TERM" = "dumb" ]; then
+  unset PROMPT_COMMAND
+fi
+
+# use color grep by default
+GREP_OPTIONS='--color=auto'
+
+### <HISTORY>
+##
+#
+
+# don't put duplicate lines in the history. See bash(1) for more options
+# don't overwrite GNU Midnight Commander's setting of `ignorespace'.
+export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
+# ... or force ignoredups and ignorespace
+export HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+
+# Increase history file size
+export HISTFILESIZE=20000
+export HISTSIZE=10000
+shopt -s histappend
+# Combine multiline commands into one in history
+shopt -s cmdhist
+# Ignore duplicates, ls without options and builtin commands
+export HISTCONTROL=ignoredups
+export HISTIGNORE="&:ls:[bf]g:exit"
+
+#
+##
+### </HISTORY>
+
+### <PATH>
+##
+#
+
+export SCALA_HOME=/usr/local/share/scala-2.11.4
+
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=/usr/local/git/bin:$PATH
+export PATH=$PATH:/usr/local/mysql/bin
+export PATH=$PATH:/usr/local/share/npm/bin:/usr/local/lib/node_modules/npm/bin
+export PATH=$PATH:$HOME/adt/sdk/platform-tools:$HOME/adt/sdk/tools:$HOME/android-ndk-r8d
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$SCALA_HOME/bin
+
+#
+##
+### </PATH>
+
+### <JAVA>
+##
+#
+export JAVA_ROOT=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents
+export JAVA_HOME=$JAVA_ROOT/Home
+#
+##
+### </JAVA>
+
+
+### <HADOOP>
+##
+#
+alias hstart="/usr/local/Cellar/hadoop/2.6.0/sbin/start-dfs.sh;/usr/local/Cellar/hadoop/2.6.0/sbin/start-yarn.sh"
+alias hstop="/usr/local/Cellar/hadoop/2.6.0/sbin/stop-yarn.sh;/usr/local/Cellar/hadoop/2.6.0/sbin/stop-dfs.sh"
+#
+##
+### </HADOOP>
+
+### <BASH COMPLETION>
+##
+#
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+fi
+#
+##
+### </BASH COMPLETION>
+
+### <ANDROID DEV>
+##
+#
+export ANDROID_HOME=/Users/seanh/Library/Android/sdk/
+#
+##
+### </ANDROID DEV>
