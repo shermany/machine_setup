@@ -21,6 +21,12 @@ git config --global user.email "sean.hermany@gmail.com"
 git config --global user.name "Sean Hermany"
 ```
 
+#### Squelch the annoying message about the git push behavior change (old news)
+
+```
+git config --global push.default simple
+```
+
 ### ack (brew)
 ### tree (brew)
 ### wget (brew)
