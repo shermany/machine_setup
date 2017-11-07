@@ -9,7 +9,7 @@ http://www.gnu.org/software/emacs/#Obtaining
 ### Build Commands
 
 ```
-$ ./configure —prefix=/home/seanh/local --with-x=no --without-sound --without-xpm --without-jpeg --without-tiff --without-gif --without-png
+$ ./configure —prefix=/home/seanh/local --with-x=no --without-sound --without-xpm --without-jpeg --without-tiff --without-gif --without-png --with-ns=no --disable-ns-self-contained
 
 $ make
 
@@ -17,6 +17,10 @@ $ make install
 ```
 
 Note: Use `—prefix` only on boxes where you can't install locally
+
+`--with-ns=no` disables OSX extensions, and `--disable-ns-self-contained` stops creation of an OSX `.app` package.
+
+The last bit enables the install process to put things in /usr/local/bin like normal.
 
 ### Linux subtleties
 
